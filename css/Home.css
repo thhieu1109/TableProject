@@ -1,0 +1,107 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+li {
+    list-style: none;
+}
+img{
+    width: 100%;
+    height: 100%;
+}
+
+
+main {
+  
+    .sidebar {
+        background-color: palevioletred;
+        color: aliceblue;
+        .logo {
+            border-bottom: 1px solid grey;
+            height: 70px;
+            padding: 10px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .left-icon{
+                background-color: black;
+                height: 40px;
+                width: 40px;
+                border-radius: 50%;
+                position: absolute;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                right: 0px;
+                transform: translate(50%,-50%);
+                top: 50%;
+            }
+        }
+
+        .menu {
+
+            li {
+                gap: 30px;
+                display: flex;
+                align-items: center;
+                padding: 10px;
+                &:hover{
+                    color: black;
+                    background-color: aliceblue;
+                }
+            }
+        }
+    }
+
+    .main-content {
+        flex: 1;
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+            border-bottom: 1px solid gray;
+            padding: 0px 30px;
+            .user-icon {
+                gap: 20px;
+                display: flex;
+            }
+
+            .user-logo{
+                 height: 30px;
+                 width: 30px;
+                img{
+                  border-radius: 50%; 
+                }
+                
+
+            }
+
+        }
+    }
+
+}
+ /* table  */
+@media screen and (min-width:741px) {
+    main {
+    display: flex;
+    height: 100vh;
+    }
+}
+ /* mobile */
+@media screen and (max-width:740px) {
+    main{
+        .sidebar{
+            .logo{
+               .left-icon{
+                right: 30px;
+               }
+            }
+        }
+    }
+
+}
