@@ -21,18 +21,29 @@
     <main>
         <div class="sidebar">
             <div class="logo">
-                <h4>PINK STORE</h4>
+                <h4 class="mb-0 item d-none">PINK STORE</h4><i class="fa-solid fa-truck"></i>
                 <div class="left-icon">
                     <i class="fa-solid fa-arrow-left"></i>
+                    <i class="fa-solid fa-arrow-right-to-bracket d-none"></i>
                 </div>
             </div>
-            <div class="menu">
-                <li><i class="fa-solid fa-gauge"></i>DASHBOARD</li>
-                <li>UI ELEMENTS</li>
-                <li><i class="fa-solid fa-calendar-days"></i>RESERVATION</li>
-                <li><i class="fa-solid fa-utensils"></i>ODER FOOD</li>
-                <li><i class="fa-solid fa-money-bill"></i>PAY BILL</li>
-                <li><i class="fa-solid fa-user"></i>INFORMATION</li>
+            <div class="menu none">
+                <li><i class="fa-solid fa-gauge"></i>
+                    <p class="item d-none">DASHBOARD</p>
+                </li>
+                <li class="item d-none">UI ELEMENTS</li>
+                <li><i class="fa-solid fa-calendar-days"></i>
+                    <p class="item d-none">RESERVATION</p>
+                </li>
+                <li><i class="fa-solid fa-utensils"></i>
+                    <p class="item d-none">ODER FOOD</p>
+                </li>
+                <li><i class="fa-solid fa-money-bill"></i>
+                    <p class="item d-none">PAY BILL</p>
+                </li>
+                <li><i class="fa-solid fa-user"></i>
+                    <p class="item d-none">INFORMATION</p>
+                </li>
             </div>
         </div>
         <div class="main-content">
@@ -44,13 +55,78 @@
                 </div>
 
                 <div class="user-logo">
-                    <img src=https://images.unsplash.com/photo-1633332755192-727a05c4013d?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D" alt="">
+                    <img src=https://images.unsplash.com/photo-1633332755192-727a05c4013d?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D"
+                        alt="" id="userAvatar">
+                    <div class="user-dropdown d-none" id="userDropdown">
+                        <p><strong>Username:</strong> John Doe</p>
+                        <p><strong>Email:</strong> john@example.com</p>
+                        <hr>
+                        <button class="btn btn-sm btn-outline-danger w-100">Logout</button>
+                    </div>
                 </div>
             </div>
-            <div class="contents"></div>
+            <div class="contents">
+                <div class="used-tables">
+                    <div class="table-card">
+                        <div class="table-number">1</div>
+                        <img src="../image/tea-time.png" alt="" />
+                        <div class="table-actions">
+                            <button class="btn btn-success"><i class="fa-solid fa-plus"></i> ADD</button>
+                            <button class="btn btn-danger"><i class="fa-solid fa-cart-shopping"></i> CART</button>
+                        </div>
+                    </div>
+                    <div class="table-card">
+                        <div class="table-number">2</div>
+                        <img src="../image/tea-time.png" alt="" />
+                        <div class="table-actions">
+                            <button class="btn btn-success"><i class="fa-solid fa-plus"></i> ADD</button>
+                            <button class="btn btn-danger"><i class="fa-solid fa-cart-shopping"></i> CART</button>
+                        </div>
+                    </div>
+                    <div class="table-card">
+                        <div class="table-number">3</div>
+                        <img src="../image/tea-time.png" alt="" />
+                        <div class="table-actions">
+                            <button class="btn btn-success"><i class="fa-solid fa-plus"></i> ADD</button>
+                            <button class="btn btn-danger"><i class="fa-solid fa-cart-shopping"></i> CART</button>
+                        </div>
+                    </div>
+                    <div class="table-card">
+                        <div class="table-number">4</div>
+                        <img src="../image/tea-time.png" alt="" />
+                        <div class="table-actions">
+                            <button class="btn btn-success"><i class="fa-solid fa-plus"></i> ADD</button>
+                            <button class="btn btn-danger"><i class="fa-solid fa-cart-shopping"></i> CART</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="nohuman-tables">
+                    <div class="table-card">
+                        <div class="table-number">5</div>
+                        <img src="../image/restaurant.png" alt="" />
+                        <button class="btn btn-warning w-100"><i class="fa-solid fa-calendar-plus"></i> BOOKING</button>
+                    </div>
+                    <div class="table-card">
+                        <div class="table-number">6</div>
+                        <img src="../image/restaurant.png" alt="" />
+                        <button class="btn btn-warning w-100"><i class="fa-solid fa-calendar-plus"></i> BOOKING</button>
+                    </div>
+                    <div class="table-card">
+                        <div class="table-number">7</div>
+                        <img src="../image/restaurant.png" alt="" />
+                        <button class="btn btn-warning w-100"><i class="fa-solid fa-calendar-plus"></i> BOOKING</button>
+                    </div>
+                    <div class="table-card">
+                        <div class="table-number">8</div>
+                        <img src="../image/restaurant.png" alt="" />
+                        <button class="btn btn-warning w-100"><i class="fa-solid fa-calendar-plus"></i> BOOKING</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
     <!-- Bootstrap JavaScript Libraries -->
+    <script src="../js/home.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
         crossorigin="anonymous"></script>
