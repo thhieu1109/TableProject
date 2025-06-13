@@ -176,7 +176,7 @@ main {
 
 }
 
-/* table  */
+/* tablet  */
 @media screen and (min-width:741px) {
     main {
         display: flex;
@@ -198,6 +198,49 @@ main {
                 }
             }
         }
-    }
 
+        .main-content {
+            padding: 10px;
+
+            .topbar {
+                flex-direction: column;
+                gap: 10px;
+                padding: 10px;
+                margin-bottom: 20px;
+
+                .user-icon {
+                    gap: 10px;
+                }
+
+                .user-logo {
+                    width: 40px;
+                    height: 40px;
+
+
+                }
+
+
+            }
+
+            .contents {
+                padding: 10px;
+
+                .used-tables,
+                .nohuman-tables {
+                    grid-template-columns: 1fr;
+                }
+
+                .table-card {
+                    img {
+                        height: 150px;
+                    }
+
+                    .table-actions {
+                        flex-direction: column;
+                    }
+                }
+            }
+        }
+
+    }
 }
