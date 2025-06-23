@@ -17,6 +17,11 @@ p {
     margin: 0 !important;
 }
 
+.box {
+    display: none;
+    padding: 20px;
+}
+
 main {
 
     .sidebar {
@@ -116,60 +121,42 @@ main {
         }
 
 
-        .contents {
-            padding: 20px;
+        .corner-number {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: #d14c7e;
+            color: white;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 
-            .used-tables,
-            .nohuman-tables {
-                display: grid;
-                grid-template-columns: repeat(4, 1fr);
-                gap: 20px;
-                margin-bottom: 20px;
-
-                .table-card {
-                    background-color: white;
-                    border-radius: 10px;
-                    padding: 15px;
-                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-                    text-align: center;
-                    position: relative;
-
-                    .table-number {
-                        position: absolute;
-                        top: 5px;
-                        left: 10px;
-                        background-color: palevioletred;
-                        color: white;
-                        font-weight: bold;
-                        padding: 2px 8px;
-                        border-radius: 50%;
-                    }
-
-                    img {
-                        max-width: 100%;
-                        height: 200px;
-                        object-fit: contain;
-                        margin-bottom: 10px;
-                    }
-
-                    .table-actions {
-                        display: flex;
-                        justify-content: space-between;
-                        gap: 10px;
-
-                        button {
-                            flex: 1;
-                        }
-                    }
-
-                    button {
-                        i {
-                            margin-right: 5px;
-                        }
-                    }
-                }
-            }
         }
+
+        .contents {
+            height: calc(100vh - 70px);
+            overflow-y: auto;
+        }
+
+        .edit-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: palevioletred;
+            cursor: pointer;
+        }
+
+        .rounded-btn{
+            width: 35px;
+            height: 35px;
+            border-radius: 50% !important;
+        }
+
 
 
     }

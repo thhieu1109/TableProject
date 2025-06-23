@@ -30,3 +30,25 @@ const userDropdown = document.getElementById("userDropdown");
 userAvatar.addEventListener("click", () => {
     userDropdown.classList.toggle("d-none");
 });
+
+
+const listMenu = document.querySelectorAll(".menu li");
+const listBox = document.querySelectorAll(".main-content .box");
+listMenu.forEach((e, i) => {
+    e.addEventListener("click", () => {
+        listBox.forEach(e => e.style.display = "none");
+        listBox[i].style.display = "block";
+    })
+})
+
+
+const logoutBtn = document.getElementById('logoutBtn');
+
+document.getElementById('logoutBtn').addEventListener('click', function () {
+    // Chuyển hướng về trang login
+    window.location.href = "LoginAndSignup.html";
+});
+
+
+
+
