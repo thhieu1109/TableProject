@@ -97,10 +97,9 @@
                 <div class="box">
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <div>
-                            <select class="form-select d-inline-block w-auto me-2">
-                                <option>Choose a table</option>
-                                <option>Table 1</option>
-                                <option>Table 2</option>
+                            <select class="form-select d-inline-block w-auto me-2 tableOption">
+                                <option selected disabled>Choose a table</option>
+                              
                             </select>
                             <button class="btn btn-secondary">Order</button>
                         </div>
@@ -164,7 +163,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">GỬI</button>
+                        <button type="button" id="bookingSubmitButton" class="btn btn-primary">GỬI</button>
                     </div>
                 </div>
             </div>
@@ -196,16 +195,16 @@
                                 <div class="input-group mb-2">
                                     <input type="file" class="form-control" id="foodImage">
                                     <button class="btn btn-outline-secondary" type="button"
-                                        id="uploadBtn">Upload</button>
+                                        >Upload</button>
                                 </div>
-
+                                  <img src="" alt="" id="img_book">
                             </div>
                         </form>
                     </div>
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Add Food</button>
+                        <button type="button" id="uploadBtn" class="btn btn-primary">Add Food</button>
                     </div>
                 </div>
             </div>
@@ -264,7 +263,7 @@
 
     </main>
 
-
+    <script src="../js//configCloudinary.js"></script>
     <script src="../js/api.js"></script>
     <script src="../js/getTable.js"></script>
     <script src="../js/getDish.js"></script>
