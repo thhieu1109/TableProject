@@ -1,26 +1,33 @@
-// Hàm upload ảnh lên Cloudinary và trả về link
+// Hàm upload ảnh lên Cloudinary và trả về đường dẫn ảnh sau khi upload thành công
 async function uploadImageToCloudinary(file) {
-    const cloudName = "dfoagvlwc"; // Thay bằng cloud_name của bạn
-    const uploadPreset = "appfood"; // Thay bằng upload_preset đã cấu hình
+    // Thông tin tài khoản Cloudinary (cần cấu hình sẵn)
+    const cloudName = "dfoagvlwc";       // Thay bằng cloud_name của bạn trên Cloudinary
+    const uploadPreset = "appfood";      // Thay bằng upload_preset đã tạo trong Cloudinary
 
+    // Tạo một FormData để chứa file và các thông tin cấu hình
     const formData = new FormData();
-    formData.append("file", file);
-    formData.append("upload_preset", uploadPreset);
+    formData.append("file", file);               // Thêm file ảnh
+    formData.append("upload_preset", uploadPreset); // Thêm preset để cho phép upload không cần xác thực
 
     try {
+        // Gửi yêu cầu POST đến API của Cloudinary
         const response = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
             method: "POST",
             body: formData,
         });
 
+        // Nếu server trả về lỗi (status !== 200)
         if (!response.ok) {
-            throw new Error("Failed to upload image");
+            throw new Error("Không thể upload ảnh lên Cloudinary");
         }
 
-        const data = await response.json();
-        return data.secure_url; // Trả về link ảnh đã upload
+        // Chuyển kết quả từ JSON sang object và lấy link ảnh
+        const result = await response.json();
+        return result.secure_url; // Trả về link ảnh HTTPS
+
     } catch (error) {
-        console.error("Error uploading image:", error);
-        return null; // Trả về null nếu có lỗi
+        // In lỗi ra console nếu có vấn đề trong quá trình upload
+        console.error("Lỗi khi upload ảnh lên Cloudinary:", error);
+        return null; // Trả về null để phía gọi xử lý tiếp (ví dụ: không hiển thị ảnh)
     }
 }

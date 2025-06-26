@@ -139,12 +139,6 @@
       "name": "Fried Rice",
       "img": "https://img.freepik.com/premium-photo/homemade-fried-shrimps-fried-rice-plate-thai-style-asian-food-style_1339-159426.jpg?ga=GA1.1.1583188076.1743503990&semt=ais_hybrid&w=740",
       "price": 80000
-    },
-    {
-      "id": "bd13",
-      "name": "tenhat",
-      "img": "https://res.cloudinary.com/dfoagvlwc/image/upload/v1750777030/y3qgbf7dw9gpxpdt95r9.jpg",
-      "price": "15"
     }
   ]
 }

@@ -47,9 +47,9 @@ function edit(url, item) {
   })
     .then(response => response.json())
     .then(data => {
-      console.log('Đơn hàng đã được cập nhật', data);
+      console.log('Item đã được cập nhật', data);
     })
-    .catch(error => console.error('Lỗi khi cập nhật đơn hàng', error));
+    .catch(error => console.error('Lỗi khi cập nhật', error));
 }
 
 function deleted(url, id) {
@@ -59,5 +59,5 @@ function deleted(url, id) {
     .then(response => response.json())
     .then(data => {
     })
-    .catch(error => console.error('Lỗi khi cập nhật đơn hàng', error));
+    .catch(error => console.error('Lỗi khi xóa Item này', error));
 }
