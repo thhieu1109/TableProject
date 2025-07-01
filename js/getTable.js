@@ -37,7 +37,7 @@ async function getTable() {
         // Thêm card hiển thị bàn vào giao diện
         tableContainer.innerHTML += `
             <div class="col">
-                <div class="card mb-3">
+                <div class="card mb-3 p-4">
                     <h1 class="corner-number fs-6">${table.id}</h1>
                     <img src="${imageSrc}" class="card-img-top w-50 m-auto" alt="...">
                     <div class="card-body text-center">

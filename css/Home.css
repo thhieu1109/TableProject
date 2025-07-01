@@ -30,27 +30,47 @@ p {
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @keyframes slideIn {
-    from { transform: translateX(-100%); }
-    to { transform: translateX(0); }
+    from {
+        transform: translateX(-100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
 }
 
 @keyframes glow {
-    0%, 100% { box-shadow: 0 0 20px rgba(255, 255, 255, 0.3); }
-    50% { box-shadow: 0 0 30px rgba(255, 255, 255, 0.6); }
+
+    0%,
+    100% {
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    }
+
+    50% {
+        box-shadow: 0 0 30px rgba(255, 255, 255, 0.6);
+    }
 }
 
-.card{
+.card {
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 
 
 main {
-     display: flex;
+    display: flex;
+
     .sidebar {
         background: linear-gradient(180deg, #ff6b6b 0%, #ee5a52 50%, #d63384 100%);
         color: white;
@@ -80,7 +100,7 @@ main {
             justify-content: center;
             gap: 15px;
             background: rgba(255, 255, 255, 0.1);
-            
+
             transition: all 0.3s ease;
 
             h4 {
@@ -133,7 +153,8 @@ main {
                 align-items: center;
                 padding: 15px 20px;
                 margin: 5px 15px;
-                border-radius: 12px 12px 12px 0; /* Thay đổi này sẽ bo 3 góc, để góc dưới trái vuông */
+                border-radius: 12px 12px 12px 0;
+                /* Thay đổi này sẽ bo 3 góc, để góc dưới trái vuông */
                 cursor: pointer;
                 transition: all 0.3s ease;
                 position: relative;
@@ -150,7 +171,8 @@ main {
                     transform: scaleY(0);
                     transition: transform 0.3s ease;
                 }
-                   &::after {
+
+                &::after {
                     content: '';
                     position: absolute;
                     bottom: 0;
@@ -164,13 +186,14 @@ main {
 
                 &:hover {
                     background: rgba(255, 255, 255, 0.15);
-                    transform: translate(10px,-10px);
+                    transform: translate(10px, -10px);
                     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 
                     &::before {
                         transform: scaleY(1);
                     }
-                     &::after {
+
+                    &::after {
                         transform: scalex(1);
                     }
                 }
@@ -194,6 +217,7 @@ main {
         background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
         position: relative;
         z-index: 0;
+
         .topbar {
             display: flex;
             justify-content: space-between;
@@ -267,16 +291,7 @@ main {
                     border-radius: 15px;
                     z-index: 2;
                     font-size: 14px;
-                    transform: translateY(-10px);
-                    opacity: 0;
-                    visibility: hidden;
-                    transition: all 0.3s ease;
-
-                    &.show {
-                        transform: translateY(0);
-                        opacity: 1;
-                        visibility: visible;
-                    }
+                                     
 
                     p {
                         margin-bottom: 8px;
@@ -321,8 +336,15 @@ main {
         }
 
         @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
         }
 
         .contents {
@@ -387,8 +409,8 @@ main {
 
         .custom-search-form {
             border: 3px solid transparent;
-            background: linear-gradient(white, white) padding-box, 
-                       linear-gradient(45deg, #ff6b6b, #667eea) border-box;
+            background: linear-gradient(white, white) padding-box,
+                linear-gradient(45deg, #ff6b6b, #667eea) border-box;
             border-radius: 50px;
             overflow: hidden;
             display: flex;
@@ -493,8 +515,9 @@ main {
             }
         }
 
-        
-        .table-card, .dish-card {
+
+        .table-card,
+        .dish-card {
             background: white;
             border-radius: 20px;
             overflow: hidden;
@@ -548,7 +571,7 @@ main {
             }
         }
 
-        
+
         .modal-content {
             border: none;
             border-radius: 20px;
@@ -598,7 +621,8 @@ main {
             }
         }
 
-        .form-control, .form-select {
+        .form-control,
+        .form-select {
             border-radius: 15px;
             border: 2px solid #e9ecef;
             padding: 12px 15px;
@@ -610,12 +634,349 @@ main {
             }
         }
     }
+
+    /* Global Styles */
+    body {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    /* Demo Button */
+    .demo-btn {
+        background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+        border: none;
+        padding: 12px 30px;
+        border-radius: 25px;
+        color: white;
+        font-weight: 600;
+        box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3);
+        transition: all 0.3s ease;
+
+        &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(255, 107, 107, 0.4);
+            color: white;
+        }
+    }
+
+    /* Modal Styles */
+    .modal {
+        &.show {
+            .modal-content {
+                animation: modalSlideIn 0.3s ease-out;
+            }
+        }
+
+        .modal-content {
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+            overflow: hidden;
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 25px 30px;
+            position: relative;
+
+            &::before {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                height: 4px;
+                background: linear-gradient(90deg, #ff6b6b, #ffa726, #42a5f5, #ab47bc);
+            }
+
+            .modal-title {
+                font-size: 1.5rem;
+                font-weight: 700;
+                letter-spacing: 1px;
+                margin: 0;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+
+                i {
+                    font-size: 1.8rem;
+                    padding: 8px;
+                    background: rgba(255, 255, 255, 0.2);
+                    border-radius: 50%;
+                    width: 45px;
+                    height: 45px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+            }
+
+            .btn-close {
+                background: rgba(255, 255, 255, 0.2);
+                border-radius: 50%;
+                width: 35px;
+                height: 35px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.3s ease;
+                filter: brightness(0) invert(1);
+
+                &:hover {
+                    background: rgba(255, 255, 255, 0.3);
+                    transform: rotate(90deg);
+                }
+            }
+        }
+
+        .modal-body {
+            padding: 35px 30px;
+            background: white;
+
+            .form-label {
+                color: #495057;
+                font-weight: 600;
+                font-size: 14px;
+                margin-bottom: 8px;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+
+                i {
+                    color: #667eea;
+                    font-size: 16px;
+                    width: 20px;
+                    text-align: center;
+                }
+            }
+
+            .form-control {
+                border: 2px solid #e9ecef;
+                border-radius: 15px;
+                padding: 15px 20px;
+                font-size: 16px;
+                transition: all 0.3s ease;
+                background: #fafafa;
+                margin-bottom: 20px;
+
+                &:focus {
+                    border-color: #667eea;
+                    box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.15);
+                    background: white;
+                    transform: translateY(-2px);
+                }
+
+                &:hover {
+                    border-color: #c3cdf0;
+                    background: white;
+                }
+
+                &::placeholder {
+                    color: #adb5bd;
+                    font-style: italic;
+                }
+            }
+
+            .mb-3 {
+                position: relative;
+                transition: all 0.3s ease;
+
+                &:hover {
+                    transform: translateY(-1px);
+                }
+            }
+        }
+
+        .modal-footer {
+            padding: 25px 30px;
+            border: none;
+            background: #f8f9fa;
+            gap: 15px;
+            justify-content: flex-end;
+
+            .btn {
+                padding: 12px 30px;
+                border-radius: 25px;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                transition: all 0.3s ease;
+                border: none;
+                position: relative;
+                overflow: hidden;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: -100%;
+                    width: 100%;
+                    height: 100%;
+                    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+                    transition: left 0.5s;
+                }
+
+                &:hover {
+                    transform: translateY(-2px);
+
+                    &::before {
+                        left: 100%;
+                    }
+                }
+            }
+
+            .btn-secondary {
+                background: linear-gradient(135deg, #6c757d, #495057);
+                color: white;
+
+                &:hover {
+                    background: linear-gradient(135deg, #495057, #343a40);
+                    box-shadow: 0 8px 25px rgba(108, 117, 125, 0.3);
+                    color: white;
+                }
+            }
+
+            .btn-primary {
+                background: linear-gradient(135deg, #667eea, #764ba2);
+                color: white;
+                min-width: 120px;
+
+                &:hover {
+                    background: linear-gradient(135deg, #764ba2, #8e44ad);
+                    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+                    color: white;
+                }
+
+                &:disabled {
+                    background: linear-gradient(135deg, #adb5bd, #868e96);
+                    transform: none;
+                    box-shadow: none;
+
+                    &:hover::before {
+                        left: -100%;
+                    }
+                }
+            }
+        }
+    }
+
+    /* Success Animation */
+    .success-animation {
+        display: none;
+        text-align: center;
+        padding: 20px;
+
+        .success-icon {
+            font-size: 4rem;
+            color: #28a745;
+            margin-bottom: 20px;
+            animation: bounceIn 0.8s ease-out;
+        }
+
+        h4 {
+            color: #28a745;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        p {
+            color: #6c757d;
+            font-size: 16px;
+            margin: 0;
+        }
+    }
+
+    /* Animations */
+    @keyframes modalSlideIn {
+        from {
+            opacity: 0;
+            transform: scale(0.8) translateY(-50px);
+        }
+
+        to {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+    }
+
+    @keyframes bounceIn {
+        0% {
+            transform: scale(0);
+        }
+
+        50% {
+            transform: scale(1.2);
+        }
+
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 576px) {
+        .modal-dialog {
+            margin: 10px;
+        }
+
+        .modal-content {
+            border-radius: 15px;
+        }
+
+        .modal-header {
+            padding: 20px 25px;
+
+            .modal-title {
+                font-size: 1.3rem;
+
+                i {
+                    width: 40px;
+                    height: 40px;
+                    font-size: 1.5rem;
+                }
+            }
+        }
+
+        .modal-body {
+            padding: 25px 25px;
+        }
+
+        .modal-footer {
+            padding: 20px 25px;
+            flex-direction: column;
+
+            .btn {
+                width: 100%;
+                margin-bottom: 10px;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+
+        .demo-btn {
+            padding: 10px 25px;
+            font-size: 14px;
+        }
+    }
+
+
+
 }
 
 /* Tablet Styles */
-@media screen and (min-width: 741px) {
-
-}
+@media screen and (min-width: 741px) {}
 
 /* Mobile Styles */
 @media screen and (max-width: 740px) {
@@ -631,7 +992,7 @@ main {
     main {
         .sidebar {
             min-width: auto;
-            
+
             .logo {
                 .left-icon {
                     right: 20px;
@@ -668,12 +1029,14 @@ main {
             .contents {
                 padding: 15px;
                 height: auto;
+
                 .used-tables,
                 .nohuman-tables {
                     grid-template-columns: 1fr;
                 }
 
-                .table-card, .dish-card {
+                .table-card,
+                .dish-card {
                     margin-bottom: 20px;
 
                     img {
@@ -702,7 +1065,7 @@ main {
                 gap: 15px;
                 align-items: stretch !important;
 
-                > div {
+                >div {
                     width: 100%;
                     justify-content: center;
                 }

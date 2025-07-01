@@ -119,7 +119,7 @@
     {
       "id": "3",
       "name": "Beef Steak",
-      "img": "https://img.freepik.com/free-photo/beef-steak_74190-5822.jpg?ga=GA1.1.1583188076.1743503990&semt=ais_hybrid&w=740",
+      "img": "https://img.freepik.com/premium-vector/meat-pan-fresh-food-cooking-breezy-slice-steak-fried-background-isolated-white-design-flat-style-illustration-dinner-roasted-mushrooms-grilled-pork-parsley-barbecue-decoration_169479-1307.jpg?ga=GA1.1.1583188076.1743503990&semt=ais_hybrid&w=740",
       "price": 180000
     },
     {
@@ -131,13 +131,13 @@
     {
       "id": "5",
       "name": "Seafood Hotpot",
-      "img": "https://img.freepik.com/premium-photo/pot-shrimp-with-shrimp-shrimp-it_1102944-19552.jpg?ga=GA1.1.1583188076.1743503990&semt=ais_hybrid&w=740",
+      "img": "https://img.freepik.com/premium-photo/hot-pot-haven-isolated-white-background_972075-19983.jpg?ga=GA1.1.1583188076.1743503990&semt=ais_hybrid&w=740",
       "price": 220000
     },
     {
       "id": "6",
       "name": "Fried Rice",
-      "img": "https://img.freepik.com/premium-photo/homemade-fried-shrimps-fried-rice-plate-thai-style-asian-food-style_1339-159426.jpg?ga=GA1.1.1583188076.1743503990&semt=ais_hybrid&w=740",
+      "img": "https://img.freepik.com/premium-photo/overhead-view-fried-rice-shrimp-white-plate-isolated-white-with-clipping-path_101296-808.jpg?ga=GA1.1.1583188076.1743503990&semt=ais_hybrid&w=740",
       "price": 80000
     }
   ]

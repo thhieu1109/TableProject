@@ -13,7 +13,7 @@ async function getDish() {
 
         // Tạo nội dung HTML cho món ăn
         dishCard.innerHTML = `
-            <div class="card mb-3 position-relative text-center">
+            <div class="card mb-3 position-relative text-center ">
                     <div class="d-flex justify-content-between align-items-center p-2">
                         <h1 class="corner-number fs-6 mb-0">${dishItem.id}</h1>
                         <h6 class="mb-0 flex-grow-1 mx-2">${dishItem.name}</h6>
@@ -85,7 +85,7 @@ function handleFoodImageSelect(event) {
 }
 
 //---------------------------------XỬ LÝ KHI BẤM "UPLOAD" MÓN ĂN MỚI-------------------------------------------------
-let idEdit ;
+let currentEditingFoodId ;
 // Lấy nút "Upload" để thêm món ăn
 const uploadFoodBtn = document.getElementById("uploadBtn");
 
@@ -106,12 +106,12 @@ uploadFoodBtn.addEventListener("click", async () => {
     })
     // Tạo object món ăn mới để gửi lên API
     const newDish = {
-        id:  idEdit ? idEdit : id,
+        id:  currentEditingFoodId ? currentEditingFoodId : id,
         name: foodName,
         img: uploadedImageUrl,
         price: foodPrice
     };
-     if(idEdit) {
+     if(currentEditingFoodId) {
        edit(URL_DISH, newDish);
      }else {
        // Gửi yêu cầu thêm món ăn vào danh sách
@@ -121,32 +121,40 @@ uploadFoodBtn.addEventListener("click", async () => {
 });
 
 
-function editFood(id) {
-    idEdit = id ;
-    //kiếm về món ăn theo ID
-    const food = dataFood.find(e => e.id == id);
-    
-    //gán giá trị thông tin món ăn vào các trường trong modal
-    const foodName = document.getElementById("foodName");
-    foodName.value = food.name;
-    const foodPrice = document.getElementById("foodPrice");
-    foodPrice.value = food.price;
-    const img = document.getElementById("img_book");
-    img.src = food.img;
+// 👉 Hàm chỉnh sửa món ăn khi người dùng bấm vào icon cây bút
+function editFood(foodId) {
+    currentEditingFoodId = foodId; // Ghi nhớ ID món đang được chỉnh sửa
 
-    //Thay đổi tên modal
-    const title = document.getElementById("addFoodLabel");
-    title.innerText = "EDIT FOOD";
-    const updateBtn = document.getElementById("uploadBtn")
-    updateBtn.innerText = "UPDATE"
+    // 🔍 Tìm món ăn trong danh sách theo ID
+    const selectedFood = dataFood.find(food => food.id === foodId);
+
+    // 📝 Gán thông tin món ăn vào các ô nhập trong modal
+    const foodNameInput = document.getElementById("foodName");
+    foodNameInput.value = selectedFood.name;
+
+    const foodPriceInput = document.getElementById("foodPrice");
+    foodPriceInput.value = selectedFood.price;
+
+    const foodImagePreview = document.getElementById("img_book");
+    foodImagePreview.src = selectedFood.img;
+
+    // 🖊️ Đổi tên tiêu đề modal thành "EDIT FOOD"
+    const modalTitle = document.getElementById("addFoodLabel");
+    modalTitle.innerText = "EDIT FOOD";
+
+    // 🔄 Đổi nút "Upload" thành "UPDATE"
+    const uploadButton = document.getElementById("uploadBtn");
+    uploadButton.innerText = "UPDATE";
 }
 
+// 👉 Hàm xử lý khi người dùng bấm icon thùng rác để xóa món ăn
+function deleteFood(foodId) {
+    const confirmDeleteButton = document.getElementById("confirmDeleteBtn");
 
-
-function deleteFood(id) {
-   const deleteBtn = document.getElementById("confirmDeleteBtn")
-   deleteBtn.addEventListener("click",()=>{
-        deleted(URL_DISH, id)
-   })
+    // 🧨 Gắn sự kiện xóa món ăn khi người dùng xác nhận trong modal
+    confirmDeleteButton.addEventListener("click", () => {
+        deleted(URL_DISH, foodId); // Gọi hàm xóa món ăn khỏi server
+    });
 }
+
 

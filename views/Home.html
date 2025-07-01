@@ -58,10 +58,10 @@
                     <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D"
                         alt="" id="userAvatar">
                     <div class="user-dropdown d-none" id="userDropdown">
-                        <p><strong>Username:</strong> John Doe</p>
+                        <!-- <p><strong>Username:</strong> John Doe</p>
                         <p><strong>Email:</strong> john@example.com</p>
                         <hr>
-                        <button class="btn btn-sm btn-outline-danger w-100" id="logoutBtn">Logout</button>
+                        <button class="btn btn-sm btn-outline-danger w-100" id="logoutBtn">Logout</button> -->
                     </div>
                 </div>
             </div>
@@ -131,22 +131,41 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">TABLE BOOOKING</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <h5 class="modal-title" id="exampleModalLabel">
+                            <i class="fas fa-utensils"></i>
+                            BOOKING FORM
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
                     </div>
                     <!-- Body -->
                     <div class="modal-body">
                         <form id="bookingForm">
                             <div class="mb-3">
-                                <label for="customerName" class="form-label">Customer Name</label>
+                                <label for="customerName" class="form-label">
+                                    <i class="fas fa-user"></i>
+                                    Customer Name
+                                </label>
                                 <input type="text" class="form-control" id="customerName" placeholder="Customer Name"
                                     required>
                             </div>
                             <div class="mb-3">
-                                <label for="quantity" class="form-label">Quantity</label>
-                                <input type="number" class="form-control" id="quantity" placeholder="Quantity" required>
+                                <label for="quantity" class="form-label">
+                                    <i class="fas fa-users"></i>
+                                    Quantity
+                                </label>
+                                <input type="number" class="form-control" id="quantity" placeholder="Quantity" min="1"
+                                    max="20" required>
                             </div>
                         </form>
+
+                        <!-- Success Animation -->
+                        <div class="success-animation" id="successAnimation">
+                            <div class="success-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <h4>Booking Successful!</h4>
+                            <p>We will contact you soon to confirm your reservation.</p>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -163,7 +182,7 @@
                 <div class="modal-content p-3">
                     <div class="modal-header">
                         <h5 class="modal-title" id="addFoodLabel">ADD FOOD</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
                     </div>
 
                     <div class="modal-body">
@@ -181,7 +200,7 @@
                                 <label for="foodImage" class="form-label">Image</label>
                                 <div class="input-group mb-2">
                                     <input type="file" class="form-control" id="foodImage">
-                                    <button class="btn btn-outline-secondary" type="button">Upload</button>
+
                                 </div>
                                 <img src="" alt="" id="img_book">
                             </div>
@@ -203,7 +222,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="editUserModalLabel">Edit User Information</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
                     </div>
                     <div class="modal-body">
                         <form id="editUserForm">
@@ -246,7 +265,7 @@
                 </div>
             </div>
         </div>
-        
+
 
         <!-- Delete Confirmation Modal -->
         <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
@@ -255,7 +274,7 @@
                     <div class="modal-header bg-danger text-white">
                         <h5 class="modal-title" id="deleteModalLabel">Xác nhận xóa</h5>
                         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
-                            aria-label="Đóng"></button>
+                            aria-label="Đóng">X</button>
                     </div>
                     <div class="modal-body text-center">
                         <p>Bạn có chắc chắn muốn xóa mục này không?</p>
@@ -274,11 +293,12 @@
 
     <script src="../js//configCloudinary.js"></script>
     <script src="../js/api.js"></script>
+    <script src="../js/home.js"></script>
     <script src="../js/getTable.js"></script>
     <script src="../js/getDish.js"></script>
     <script src="../js/getUser.js"></script>
     <!-- Bootstrap JavaScript Libraries -->
-    <script src="../js/home.js"></script>
+    
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
         crossorigin="anonymous"></script>
