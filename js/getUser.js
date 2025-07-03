@@ -1,6 +1,5 @@
 async function getUser() {
     const data = await getAll(URL_USER);
-    console.log("Data received:", data);
     const users = document.getElementById("user-info")
 
     data.forEach(element => {

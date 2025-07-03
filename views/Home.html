@@ -112,7 +112,12 @@
                     </div>
                 </div>
                 <div class="box">
-                    Bills
+                    <div id="orderContainer" class="mt-4">
+                        <h3 class="mb-3">🧾 Hóa đơn đã thanh toán</h3>
+                        <div id="paidOrderList" class="row g-4">
+                            <!-- Mỗi hóa đơn đã thanh toán sẽ được hiển thị bằng card DOM -->
+                        </div>
+                    </div>
                 </div>
                 <div class="box">
                     <h4 class="mb-3">USER</h4>
@@ -288,6 +293,42 @@
             </div>
         </div>
 
+        <!-- Modal Chi tiết Bill -->
+        <div class="modal fade" id="billModal" tabindex="-1" aria-labelledby="billModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="billModalLabel">Chi tiết Hóa đơn</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h5>Bàn: <span id="modalTableName"></span></h5>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Tên món</th>
+                                    <th>Giá</th>
+                                    <th>Số lượng</th>
+                                    <th>Tổng</th>
+                                    <th>Hành động</th>
+                                </tr>
+                            </thead>
+                            <tbody id="modalOrderBody">
+                                <!-- Nội dung bill sẽ được DOM vào đây -->
+                            </tbody>
+                        </table>
+                        <div class="text-end fw-bold">Tổng tiền: <span id="modalTotalAmount">0</span> VND</div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                        <button type="button" id="confirmPaymentBtn" class="btn btn-success">Xác nhận thanh
+                            toán</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
 
     </main>
 
@@ -297,8 +338,9 @@
     <script src="../js/getTable.js"></script>
     <script src="../js/getDish.js"></script>
     <script src="../js/getUser.js"></script>
-    <!-- Bootstrap JavaScript Libraries -->
     
+    <!-- Bootstrap JavaScript Libraries -->
+
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
         crossorigin="anonymous"></script>

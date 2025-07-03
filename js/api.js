@@ -5,6 +5,8 @@ const URL_DISH = "http://localhost:3000/dish";
 
 const URL_USER = "http://localhost:3000/user";
 
+const URL_ORDER = "http://localhost:3000/orders";
+
 async function getAll(url) {
   try {
     const response = await fetch(url);

@@ -1,19 +1,22 @@
 let dataFood; // biến toàn cục
 
 // Hàm lấy danh sách món ăn và hiển thị ra giao diện
-async function getDish() {
+async function getDish(search) {
     const dishData = await getAll(URL_DISH); // Gọi API để lấy danh sách món ăn
     dataFood = dishData;
     const dishContainer = document.querySelector(".dish"); // Khu vực hiển thị món ăn
 
-    dishData.forEach(dishItem => {
+    const searchDish = dishData.filter(element => element.name.toLowerCase().includes(search?.toLowerCase()));
+    dishContainer.innerHTML = "";
+
+    searchDish.forEach(dishItem => {
         // Tạo thẻ div để chứa thông tin từng món
         const dishCard = document.createElement("div");
         dishCard.classList.add("col");
 
         // Tạo nội dung HTML cho món ăn
         dishCard.innerHTML = `
-            <div class="card mb-3 position-relative text-center ">
+            <div class="card dishcard mb-3 position-relative text-center ">
                     <div class="d-flex justify-content-between align-items-center p-2">
                         <h1 class="corner-number fs-6 mb-0">${dishItem.id}</h1>
                         <h6 class="mb-0 flex-grow-1 mx-2">${dishItem.name}</h6>
@@ -55,7 +58,7 @@ async function getDish() {
 }
 
 // Gọi hàm để hiển thị danh sách món ăn khi trang được tải
-getDish();
+getDish("");
 
 
 
@@ -85,7 +88,7 @@ function handleFoodImageSelect(event) {
 }
 
 //---------------------------------XỬ LÝ KHI BẤM "UPLOAD" MÓN ĂN MỚI-------------------------------------------------
-let currentEditingFoodId ;
+let currentEditingFoodId;
 // Lấy nút "Upload" để thêm món ăn
 const uploadFoodBtn = document.getElementById("uploadBtn");
 
@@ -96,7 +99,7 @@ uploadFoodBtn.addEventListener("click", async () => {
 
     // Upload ảnh lên Cloudinary (hoặc dịch vụ khác)
     const uploadedImageUrl = await uploadImageToCloudinary(selectedFoodImageFile);
-     let id = 1 ;
+    let id = 1;
     dataFood.forEach(e => {
         if (e.id == id) {
             id++;
@@ -106,31 +109,33 @@ uploadFoodBtn.addEventListener("click", async () => {
     })
     // Tạo object món ăn mới để gửi lên API
     const newDish = {
-        id:  currentEditingFoodId ? currentEditingFoodId : id,
+        id: currentEditingFoodId ? currentEditingFoodId : id,
         name: foodName,
         img: uploadedImageUrl,
         price: foodPrice
     };
-     if(currentEditingFoodId) {
-       edit(URL_DISH, newDish);
-     }else {
-       // Gửi yêu cầu thêm món ăn vào danh sách
-       add(URL_DISH, newDish);
-     }
-  
+    if (currentEditingFoodId) {
+        edit(URL_DISH, newDish);
+    } else {
+        // Gửi yêu cầu thêm món ăn vào danh sách
+        add(URL_DISH, newDish);
+    }
+
 });
 
 
 // 👉 Hàm chỉnh sửa món ăn khi người dùng bấm vào icon cây bút
 function editFood(foodId) {
+
     currentEditingFoodId = foodId; // Ghi nhớ ID món đang được chỉnh sửa
 
     // 🔍 Tìm món ăn trong danh sách theo ID
-    const selectedFood = dataFood.find(food => food.id === foodId);
+    const selectedFood = dataFood.find(food => food.id == foodId);
 
     // 📝 Gán thông tin món ăn vào các ô nhập trong modal
     const foodNameInput = document.getElementById("foodName");
     foodNameInput.value = selectedFood.name;
+
 
     const foodPriceInput = document.getElementById("foodPrice");
     foodPriceInput.value = selectedFood.price;
@@ -145,6 +150,8 @@ function editFood(foodId) {
     // 🔄 Đổi nút "Upload" thành "UPDATE"
     const uploadButton = document.getElementById("uploadBtn");
     uploadButton.innerText = "UPDATE";
+
+
 }
 
 // 👉 Hàm xử lý khi người dùng bấm icon thùng rác để xóa món ăn
@@ -156,5 +163,84 @@ function deleteFood(foodId) {
         deleted(URL_DISH, foodId); // Gọi hàm xóa món ăn khỏi server
     });
 }
+
+
+const searchInput = document.querySelector(".custom-search-input");
+searchInput.addEventListener("change", () => {
+    getDish(searchInput.value || "");
+})
+
+const addFoodButton = document.querySelector(".btn-add-food");
+addFoodButton.addEventListener("click", () => {
+    document.getElementById("foodName").value = "";
+    document.getElementById("foodPrice").value = "";
+    document.getElementById("img_book").src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeobbIOkPKuBfaQ2icZDyYxETR_cTiuXaVRA&s";
+    selectedFoodImageFile = null;
+    currentEditingFoodId = null;
+    document.getElementById("uploadBtn").innerText = "UPLOAD";
+    document.getElementById("addFoodLabel").innerText = "ADD FOOD";
+}
+);
+
+
+
+// ----------------------- ODER FUNC --------------------------
+
+// Lấy nút "Đặt món"
+const orderButton = document.querySelector(".btn-order");
+
+orderButton.addEventListener("click", async () => {
+    // Lấy ID bàn được chọn từ dropdown
+    const selectedTableId = document.querySelector(".tableOption").value;
+
+    // Lấy danh sách các card món ăn trong giao diện
+    const dishCards = document.querySelectorAll(".dishcard");
+
+    // Lấy toàn bộ dữ liệu đơn hàng từ API
+    const allOrders = await getAll(URL_ORDER);
+
+    // Tìm đơn hàng đã tồn tại cho bàn đang chọn
+    const existingOrder = allOrders.find(order => order.id == selectedTableId);
+
+    // Nếu đơn hàng đã tồn tại thì lấy danh sách bill, nếu không thì khởi tạo mảng rỗng
+    const currentBill = existingOrder ? existingOrder.bill : [];
+
+    // Duyệt qua từng món ăn trong giao diện để kiểm tra số lượng đặt
+    dishCards.forEach(card => {
+        const quantityInput = card.querySelector(".quantity").value;
+
+        // Chỉ xử lý nếu số lượng lớn hơn 0
+        if (quantityInput > 0) {
+            const foodId = card.querySelector(".corner-number").innerText;
+            const existingFoodIndex = currentBill.findIndex(item => item.idFood == foodId);
+
+            if (existingFoodIndex !== -1) {
+                // Nếu món ăn đã tồn tại trong bill, cập nhật số lượng
+                currentBill[existingFoodIndex].quantity += parseInt(quantityInput);
+            } else {
+                // Nếu chưa có, thêm mới món ăn vào bill
+                currentBill.push({
+                    idFood: foodId,
+                    quantity: parseInt(quantityInput)
+                });
+            }
+        }
+    });
+
+    // Tạo đối tượng đơn hàng mới
+    const newOrder = {
+        id: selectedTableId,
+        bill: currentBill
+    };
+
+    // Gọi API để cập nhật đơn hàng nếu đã có, hoặc thêm mới nếu chưa có
+    if (existingOrder) {
+        edit(URL_ORDER, newOrder);
+    } else {
+        add(URL_ORDER, newOrder);
+    }
+});
+
+
 
 

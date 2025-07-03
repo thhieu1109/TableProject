@@ -16,7 +16,7 @@ async function logIn() {
     }
     localStorage.setItem("currentUser", JSON.stringify(userLogin));
     alert(`Đăng nhập thành công! Xin chào ${userLogin.username}.`);
-    window.location.href = "Home.html"
+    window.location.href = "Home.html";
 }
 
 
