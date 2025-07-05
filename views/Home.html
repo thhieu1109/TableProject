@@ -35,7 +35,7 @@
                 <li><i class="fa-solid fa-calendar-days"></i>
                     <p class="item d-none">RESERVATION</p>
                 </li>
-                <li><i class="fa-solid fa-utensils"></i>
+                <li id="orderFoodMenu"><i class="fa-solid fa-utensils"></i>
                     <p class="item d-none">ODER FOOD</p>
                 </li>
                 <li><i class="fa-solid fa-money-bill"></i>
@@ -121,7 +121,7 @@
                 </div>
                 <div class="box">
                     <h4 class="mb-3">USER</h4>
-                    <div class="row" id="user-info">
+                    <div class="user-card-wrapper d-flex justify-content-center mt-5" id="user-info">
                         <!-- Thông tin user sẽ được render ở đây -->
                     </div>
                 </div>
@@ -299,7 +299,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="billModalLabel">Chi tiết Hóa đơn</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng">X</button>
                     </div>
                     <div class="modal-body">
                         <h5>Bàn: <span id="modalTableName"></span></h5>
@@ -310,7 +310,7 @@
                                     <th>Giá</th>
                                     <th>Số lượng</th>
                                     <th>Tổng</th>
-                                    <th>Hành động</th>
+
                                 </tr>
                             </thead>
                             <tbody id="modalOrderBody">
@@ -338,7 +338,7 @@
     <script src="../js/getTable.js"></script>
     <script src="../js/getDish.js"></script>
     <script src="../js/getUser.js"></script>
-    
+
     <!-- Bootstrap JavaScript Libraries -->
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"

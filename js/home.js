@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
+    
+
     // Biến lấy các item trong menu sidebar
     const getItemSidebar = document.querySelectorAll(".item");
 

@@ -1,25 +1,32 @@
 // Hàm lấy danh sách bàn ăn và hiển thị lên giao diện
 async function getTable() {
     const tableData = await getAll(URL_TABLE); // Lấy dữ liệu từ API
+    const orderData = await getAll(URL_ORDER);
 
     const tableContainer = document.querySelector(".tables"); // Vùng hiển thị danh sách bàn
     const tableSelect = document.querySelector(".tableOption"); // Danh sách thả xuống để chọn bàn (ở phần order)
+    
+   
 
     tableData.forEach(table => {
+        const relatedOrder = orderData.find(order => order.id == table.id);
+       
+        const isUnpaid = relatedOrder && relatedOrder.status !== "paid";
         // Nếu bàn đang trống (status === true), thêm vào lựa chọn order
-        if (table.status) {
+        if (table.status && isUnpaid) {
             tableSelect.innerHTML += `<option value="${table.id}">${table.name}</option>`;
+
         }
 
         // Chọn hình ảnh phù hợp theo trạng thái của bàn(toán tử 3 ngôi)
-        const imageSrc = table.status
+        const imageSrc = (table.status && isUnpaid)
             ? "../image/tables/tea-time.png"
             : "../image/tables/restaurant.png";
 
         // Tạo nút theo trạng thái bàn(toán tử 3 ngôi)
-        const actionButtons = table.status
+        const actionButtons = (table.status && isUnpaid)
             ? `
-                <button class="btn btn-success">
+                <button class="btn btn-success" onclick="handleAddClick(${table.id})">
                     <i class="fa-solid fa-plus"></i> ADD
                 </button>
                 <button class="btn btn-danger" onClick="handleCartClick(${table.id})" data-bs-toggle="modal" data-bs-target="#billModal">
@@ -64,7 +71,7 @@ function selectTable(id) {
 const bookingSubmitButton = document.getElementById("bookingSubmitButton");
 
 // Bắt sự kiện click vào nút đặt bàn
-bookingSubmitButton.addEventListener("click", () => {
+bookingSubmitButton.addEventListener("click", async () => {
     // Lấy dữ liệu người dùng nhập vào từ form
     const customerName = document.getElementById("customerName").value;
     const numberOfGuests = document.getElementById("quantity").value;
@@ -78,16 +85,32 @@ bookingSubmitButton.addEventListener("click", () => {
         bookedBy: customerName
     };
 
-    // Gửi yêu cầu cập nhật bàn lên API (cần có CRUD cho PUT bên backend)
-    edit(URL_TABLE, updatedTable);
+    await edit(URL_TABLE, updatedTable);
+
+    // Clear form + đóng modal
+    selectedTableId = null;
+    document.getElementById("customerName").value = "";
+    document.getElementById("quantity").value = "";
+    const modal = bootstrap.Modal.getInstance(document.getElementById("bookingModal"));
+    if (modal) modal.hide();
+
+
 });
 
 
 
+let getCurrentTable; //lấy biến global để xài dưới chỗ confirmPayment vì ở hàm ni đã lấy dc biến tableId nên gán vô xài luôn
+
+// hàm handleCartClick(tableId) lấy được biến tableId do được truyền ở bên trên chỗ onClick="handleCartClick(${table.id})" cho nên gán tên parameter tên là tableId tương đương với 
+// nó chính là table.id
 async function handleCartClick(tableId) {
+
+    getCurrentTable = tableId;
+
+
     const orders = await getAll(URL_ORDER);
     const dishes = await getAll(URL_DISH);
-    const order = orders.find(order => order.id === tableId.toString());
+    const order = orders.find(order => order.id == tableId);
 
     const orderDetails = document.getElementById("modalOrderBody");
     const totalSpan = document.getElementById("modalTotalAmount");
@@ -97,7 +120,7 @@ async function handleCartClick(tableId) {
     totalSpan.textContent = "0";
     tableName.textContent = tableId;
 
-    if (!order || !order.bill || order.bill.length === 0) {
+    if (!order || !order.bill || order.bill.length === 0 || order.status === "paid") {
         orderDetails.innerHTML = `<tr><td colspan="5" class="text-center text-muted">Chưa có món nào</td></tr>`;
         return;
     }
@@ -116,7 +139,7 @@ async function handleCartClick(tableId) {
             <td>${dish.price.toLocaleString()} VND</td>
             <td>${item.quantity}</td>
             <td>${itemTotal.toLocaleString()} VND</td>
-            <td><button class="btn btn-sm btn-danger" onclick="removeFoodFromBill('${order.id}', '${item.idFood}')">Xóa</button></td>
+            
         `;
         orderDetails.appendChild(row);
     });
@@ -128,22 +151,53 @@ async function handleCartClick(tableId) {
 }
 
 
-// Xóa món khỏi đơn hàng
-async function removeFoodFromBill(orderId, foodId) {
-    const orders = await getAll(URL_ORDER);
-    const order = orders.find(o => o.id === orderId);
-    if (!order) return;
 
-    const updatedBill = order.bill.filter(item => item.idFood !== foodId);
 
-    await fetch(`${URL_ORDER}/${orderId}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ bill: updatedBill })
-    });
 
-    showOrder(orderId);
+function handleAddClick(tableId) {
+
+    const tableSelect = document.querySelector(".tableOption");
+    tableSelect.value = tableId;
+
+
+    const orderMenu = document.getElementById("orderFoodMenu");
+
+    if (orderMenu) {
+        // Giả lập click nếu có sự kiện click gắn cho menu
+        orderMenu.click();
+
+    }
 }
+
+
+const confirmPayment = document.getElementById("confirmPaymentBtn")
+
+confirmPayment.addEventListener("click", async () => {
+    if (!getCurrentTable) return;
+
+    const table = await getAll(URL_TABLE)
+
+    const orders = await getAll(URL_ORDER);
+    const order = orders.find(order => order.id == getCurrentTable);
+
+    if (!order) return;
+    const getTable = table.find(element => element.id == getCurrentTable)
+    order.status = "paid";
+
+    if (getTable) {
+        getTable.status = false;
+        getTable.bookedBy = null;
+        await edit(URL_TABLE, getTable);
+    }
+
+    edit(URL_ORDER, order);
+
+    // Đóng modal
+    const modal = bootstrap.Modal.getInstance(document.getElementById("billModal"));
+    if (modal) modal.hide();
+    await getTable();
+
+})
 
 
 

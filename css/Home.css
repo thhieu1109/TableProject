@@ -289,9 +289,9 @@ main {
                     width: 250px;
                     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
                     border-radius: 15px;
-                    z-index: 2;
+
                     font-size: 14px;
-                                     
+
 
                     p {
                         margin-bottom: 8px;
@@ -870,6 +870,27 @@ main {
         }
     }
 
+    .user-card {
+        width: 700px;
+        min-height: 300px;
+        border-radius: 12px;
+        overflow: hidden;
+        background-color: #f8f9fa;
+    }
+
+    .user-left {
+        width: 250px;
+        background: linear-gradient(135deg, #f6a564, #f37b89);
+        text-align: center;
+    }
+
+    .user-right {
+        background-color: #343a40;
+    }
+
+
+
+
     /* Success Animation */
     .success-animation {
         display: none;
@@ -970,6 +991,10 @@ main {
             font-size: 14px;
         }
     }
+
+
+
+
 
 
 

@@ -230,7 +230,8 @@ orderButton.addEventListener("click", async () => {
     // Tạo đối tượng đơn hàng mới
     const newOrder = {
         id: selectedTableId,
-        bill: currentBill
+        bill: currentBill,
+        status: "unpaid"
     };
 
     // Gọi API để cập nhật đơn hàng nếu đã có, hoặc thêm mới nếu chưa có

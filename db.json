@@ -45,72 +45,86 @@
     {
       "id": "1",
       "name": "Table 1",
-      "quantity": 100,
+      "quantity": 4,
       "status": true,
-      "bookedBy": "John Doe"
+      "bookedBy": "john_doe"
     },
     {
       "id": "2",
       "name": "Table 2",
-      "quantity": "3",
+      "quantity": 2,
       "status": true,
-      "bookedBy": "Hieu"
+      "bookedBy": "jane_smith"
     },
     {
       "id": "3",
       "name": "Table 3",
-      "quantity": 60,
+      "quantity": 6,
       "status": false,
       "bookedBy": null
     },
     {
       "id": "4",
       "name": "Table 4",
-      "quantity": 120,
+      "quantity": 5,
       "status": true,
-      "bookedBy": "Alice Smith"
+      "bookedBy": "tom_nguyen"
     },
     {
       "id": "5",
       "name": "Table 5",
-      "quantity": 90,
-      "status": false,
-      "bookedBy": null
+      "quantity": 8,
+      "status": true,
+      "bookedBy": "john_doe"
     },
     {
       "id": "6",
       "name": "Table 6",
-      "quantity": 70,
-      "status": true,
-      "bookedBy": "David Nguyen"
+      "quantity": 10,
+      "status": false,
+      "bookedBy": null
     },
     {
       "id": "7",
       "name": "Table 7",
-      "quantity": 50,
+      "quantity": 4,
       "status": true,
-      "bookedBy": "Emily Tran"
+      "bookedBy": "jane_smith"
     },
     {
       "id": "8",
       "name": "Table 8",
-      "quantity": 110,
+      "quantity": 3,
       "status": true,
-      "bookedBy": "Michael Le"
+      "bookedBy": "tom_nguyen"
     },
     {
       "id": "9",
       "name": "Table 9",
-      "quantity": 100,
+      "quantity": 7,
       "status": true,
-      "bookedBy": "Sophia Hoang"
+      "bookedBy": "john_doe"
     },
     {
       "id": "10",
       "name": "Table 10",
-      "quantity": 85,
+      "quantity": 6,
       "status": false,
       "bookedBy": null
+    },
+    {
+      "id": "11",
+      "name": "Table 11",
+      "quantity": 5,
+      "status": true,
+      "bookedBy": "jane_smith"
+    },
+    {
+      "id": "12",
+      "name": "Table 12",
+      "quantity": 9,
+      "status": true,
+      "bookedBy": "tom_nguyen"
     }
   ],
   "dish": [
@@ -151,5 +165,152 @@
       "price": 80000
     }
   ],
-  "orders": []
+  "orders": [
+    {
+      "id": "1",
+      "tableId": "1",
+      "bill": [
+        {
+          "idFood": "1",
+          "quantity": 2
+        },
+        {
+          "idFood": "6",
+          "quantity": 1
+        }
+      ],
+      "status": "unpaid"
+    },
+    {
+      "id": "2",
+      "tableId": "2",
+      "bill": [
+        {
+          "idFood": "2",
+          "quantity": 1
+        },
+        {
+          "idFood": "3",
+          "quantity": 1
+        }
+      ],
+      "status": "paid"
+    },
+    {
+      "id": "3",
+      "tableId": "4",
+      "bill": [
+        {
+          "idFood": "5",
+          "quantity": 2
+        }
+      ],
+      "status": "unpaid"
+    },
+    {
+      "id": "4",
+      "tableId": "5",
+      "bill": [
+        {
+          "idFood": "1",
+          "quantity": 1
+        },
+        {
+          "idFood": "4",
+          "quantity": 1
+        },
+        {
+          "idFood": "6",
+          "quantity": 2
+        }
+      ],
+      "status": "paid"
+    },
+    {
+      "id": "5",
+      "tableId": "7",
+      "bill": [
+        {
+          "idFood": "3",
+          "quantity": 2
+        }
+      ],
+      "status": "unpaid"
+    },
+    {
+      "id": "6",
+      "tableId": "8",
+      "bill": [
+        {
+          "idFood": "4",
+          "quantity": 2
+        },
+        {
+          "idFood": "2",
+          "quantity": 1
+        }
+      ],
+      "status": "paid"
+    },
+    {
+      "id": "7",
+      "tableId": "9",
+      "bill": [
+        {
+          "idFood": "6",
+          "quantity": 3
+        },
+        {
+          "idFood": "1",
+          "quantity": 1
+        }
+      ],
+      "status": "paid"
+    },
+    {
+      "id": "8",
+      "tableId": "11",
+      "bill": [
+        {
+          "idFood": "5",
+          "quantity": 1
+        },
+        {
+          "idFood": "2",
+          "quantity": 2
+        }
+      ],
+      "status": "unpaid"
+    },
+    {
+      "id": "9",
+      "tableId": "12",
+      "bill": [
+        {
+          "idFood": "3",
+          "quantity": 1
+        },
+        {
+          "idFood": "4",
+          "quantity": 1
+        }
+      ],
+      "status": "paid"
+    },
+    {
+      "id": "10",
+      "tableId": "1",
+      "bill": [
+        {
+          "idFood": "6",
+          "quantity": 2
+        },
+        {
+          "idFood": "5",
+          "quantity": 1
+        }
+      ],
+      "status": "unpaid"
+    }
+  ]
 }
