@@ -67,8 +67,54 @@
             </div>
             <main class="contents">
                 <div class="box">
-                    Dashboard
+                    <div class="row g-4 text-center">
+                        <div class="col-md-3">
+                            <div class="card dash-card border-start border-success border-4 shadow-sm h-100">
+                                <div class="card-body">
+                                    <div class="dash-icon bg-success mb-2">
+                                        <i class="fa-solid fa-chair text-white"></i>
+                                    </div>
+                                    <h6 class="text-muted">Tổng số bàn</h6>
+                                    <h3 id="totalTables" class="fw-bold">0</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card dash-card border-start border-primary border-4 shadow-sm h-100">
+                                <div class="card-body">
+                                    <div class="dash-icon bg-primary mb-2">
+                                        <i class="fa-solid fa-utensils text-white"></i>
+                                    </div>
+                                    <h6 class="text-muted">Đang hoạt động</h6>
+                                    <h3 id="activeTables" class="fw-bold">0</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card dash-card border-start border-warning border-4 shadow-sm h-100">
+                                <div class="card-body">
+                                    <div class="dash-icon bg-warning mb-2">
+                                        <i class="fa-solid fa-receipt text-white"></i>
+                                    </div>
+                                    <h6 class="text-muted">Đơn chưa thanh toán</h6>
+                                    <h3 id="unpaidOrders" class="fw-bold">0</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card dash-card border-start border-danger border-4 shadow-sm h-100">
+                                <div class="card-body">
+                                    <div class="dash-icon bg-danger mb-2">
+                                        <i class="fa-solid fa-coins text-white"></i>
+                                    </div>
+                                    <h6 class="text-muted">Doanh thu hôm nay</h6>
+                                    <h3 id="todayRevenue" class="fw-bold">0 VND</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
                 <div class="box">
                     <div class="row row-cols-xl-4 row-cols-md-2 row-cols-1 p-3 tables">
                         <!-- Những phần tử Tables sẽ được hiển thị bằng DOM bên file getTable.js để rút gọn code -->

@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    
+
 
     // Biến lấy các item trong menu sidebar
     const getItemSidebar = document.querySelectorAll(".item");
@@ -65,4 +65,42 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
         window.location.href = "LoginAndSignup.html";
     }
+
+
+
+
+    async function loadDashboard() {
+        const tables = await getAll(URL_TABLE);
+        const orders = await getAll(URL_ORDER);
+        const dishes = await getAll(URL_DISH);
+
+        // Tổng bàn
+        document.getElementById("totalTables").innerText = tables.length;
+
+        // Số bàn đang hoạt động
+        const activeTables = tables.filter(t => t.status == true).length;
+        document.getElementById("activeTables").innerText = activeTables;
+
+        // Đơn chưa thanh toán
+        const unpaidOrders = orders.filter(o => o.status === "unpaid").length;
+        document.getElementById("unpaidOrders").innerText = unpaidOrders;
+
+        // Doanh thu hôm nay
+        let todayRevenue = 0;
+        const today = new Date().toISOString().split("T")[0]; // yyyy-mm-dd
+        orders.forEach(order => {
+            if (order.status === "paid" && order.paidAt?.startsWith(today)) {
+                order.bill.forEach(item => {
+                    const food = dishes.find(d => d.id == item.idFood);
+                    if (food) {
+                        todayRevenue += food.price * item.quantity;
+                    }
+                });
+            }
+        });
+        document.getElementById("todayRevenue").innerText = todayRevenue.toLocaleString() + " VND";
+    }
+
+    loadDashboard();
+
 });

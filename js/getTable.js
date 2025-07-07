@@ -5,12 +5,12 @@ async function getTable() {
 
     const tableContainer = document.querySelector(".tables"); // Vùng hiển thị danh sách bàn
     const tableSelect = document.querySelector(".tableOption"); // Danh sách thả xuống để chọn bàn (ở phần order)
-    
-   
+
+
 
     tableData.forEach(table => {
         const relatedOrder = orderData.find(order => order.id == table.id);
-       
+
         const isUnpaid = relatedOrder && relatedOrder.status !== "paid";
         // Nếu bàn đang trống (status === true), thêm vào lựa chọn order
         if (table.status && isUnpaid) {
@@ -183,6 +183,7 @@ confirmPayment.addEventListener("click", async () => {
     if (!order) return;
     const getTable = table.find(element => element.id == getCurrentTable)
     order.status = "paid";
+    order.paidAt = new Date().toISOString();
 
     if (getTable) {
         getTable.status = false;
@@ -199,5 +200,59 @@ confirmPayment.addEventListener("click", async () => {
 
 })
 
+async function showPaidOrders(params) {
+    const orders = await getAll(URL_ORDER);
+    const dishes = await getAll(URL_DISH);
+
+    const paidOrderContainer = document.getElementById("paidOrderList")
+
+    const paidOrders = orders.filter(element => element.status === "paid")
+
+    if (paidOrders.length === 0) {
+        paidOrderContainer.innerHTML = `<p class="text-muted">Không có đơn hàng đã thanh toán.</p>`;
+        return;
+    }
+
+    paidOrders.forEach(element => {
+
+        let total = 0
+        let orderItemsHtml = "";
+        const paidTime = new Date(element.paidAt).toLocaleString();
+        element.bill.forEach(item => {
+            const dish = dishes.find(d => d.id == item.idFood);
+            if (!dish) return;
+
+            const itemTotal = dish.price * item.quantity;
+            total += itemTotal;
+
+            orderItemsHtml += `<li>${dish.name} x ${item.quantity} = ${itemTotal.toLocaleString()} VND</li>`;
+            
+        })
+
+        const orderCard = document.createElement("div");
+        orderCard.classList.add("col-md-6", "mb-3");
+
+        orderCard.innerHTML = `
+            <div class="card shadow-sm fixed-order-card">
+                <div class="card-header bg-success text-white">
+                    <strong>Bàn số: ${element.id}</strong>
+                </div>
+                <div class="card-body">
+                    <ul>${orderItemsHtml}</ul>
+                    <hr>
+                    <strong>Tổng cộng: ${total.toLocaleString()} VND</strong>
+                    <small class="text-muted">Thanh toán lúc: ${paidTime}</small>
+                </div>
+            </div>
+        `;
+
+        paidOrderContainer.appendChild(orderCard);
+
+    })
+
+
+}
+
+showPaidOrders();
 
 

@@ -194,7 +194,8 @@
           "quantity": 1
         }
       ],
-      "status": "paid"
+      "status": "paid",
+      "paidAt": "2025-07-07T10:00:00Z"
     },
     {
       "id": "3",
@@ -224,7 +225,8 @@
           "quantity": 2
         }
       ],
-      "status": "paid"
+      "status": "paid",
+      "paidAt": "2025-07-06T15:30:00Z"
     },
     {
       "id": "5",
@@ -250,7 +252,8 @@
           "quantity": 1
         }
       ],
-      "status": "paid"
+      "status": "paid",
+      "paidAt": "2025-07-05T18:45:00Z"
     },
     {
       "id": "7",
@@ -265,7 +268,8 @@
           "quantity": 1
         }
       ],
-      "status": "paid"
+      "status": "paid",
+      "paidAt": "2025-07-07T09:20:00Z"
     },
     {
       "id": "8",
@@ -295,7 +299,8 @@
           "quantity": 1
         }
       ],
-      "status": "paid"
+      "status": "paid",
+      "paidAt": "2025-07-07T11:15:00Z"
     },
     {
       "id": "10",
