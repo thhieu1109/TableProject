@@ -46,22 +46,22 @@
       "id": "1",
       "name": "Table 1",
       "quantity": 4,
-      "status": true,
-      "bookedBy": "john_doe"
+      "status": false,
+      "bookedBy": null
     },
     {
       "id": "2",
       "name": "Table 2",
-      "quantity": 2,
+      "quantity": "4",
       "status": true,
-      "bookedBy": "jane_smith"
+      "bookedBy": "Hieu"
     },
     {
       "id": "3",
       "name": "Table 3",
-      "quantity": 6,
-      "status": false,
-      "bookedBy": null
+      "quantity": "8",
+      "status": true,
+      "bookedBy": "Hieu"
     },
     {
       "id": "4",
@@ -74,8 +74,8 @@
       "id": "5",
       "name": "Table 5",
       "quantity": 8,
-      "status": true,
-      "bookedBy": "john_doe"
+      "status": false,
+      "bookedBy": null
     },
     {
       "id": "6",
@@ -163,6 +163,18 @@
       "name": "Fried Rice",
       "img": "https://img.freepik.com/premium-photo/overhead-view-fried-rice-shrimp-white-plate-isolated-white-with-clipping-path_101296-808.jpg?ga=GA1.1.1583188076.1743503990&semt=ais_hybrid&w=740",
       "price": 80000
+    },
+    {
+      "id": "7",
+      "name": "123123",
+      "img": "https://res.cloudinary.com/dfoagvlwc/image/upload/v1751979810/xlmtcleexdzr0jxd2u4k.jpg",
+      "price": "123123132"
+    },
+    {
+      "id": "8",
+      "name": "guhnfhm",
+      "img": "https://res.cloudinary.com/dfoagvlwc/image/upload/v1751980446/zojotksbhofyyz44uk4v.jpg",
+      "price": "12"
     }
   ],
   "orders": [
@@ -179,7 +191,8 @@
           "quantity": 1
         }
       ],
-      "status": "unpaid"
+      "status": "paid",
+      "paidAt": "2025-07-08T12:57:33.731Z"
     },
     {
       "id": "2",
@@ -237,7 +250,8 @@
           "quantity": 2
         }
       ],
-      "status": "unpaid"
+      "status": "paid",
+      "paidAt": "2025-07-08T12:35:33.004Z"
     },
     {
       "id": "6",

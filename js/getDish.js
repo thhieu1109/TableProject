@@ -26,7 +26,7 @@ async function getDish(search) {
                               <i onClick="deleteFood(${dishItem.id})" data-bs-toggle="modal" data-bs-target="#deleteModal" class="fa-solid fa-trash delete-icon text-danger"></i>
                         </div>
                     </div>
-                    <img src="${dishItem.img}" class="card-img-top m-auto" style="height: 150px" alt="...">
+                    <img src="${dishItem.img}" class="card-img-top m-auto p-2" style="height: 200px" alt="...">
                     <p class="text-danger fw-bold">${dishItem.price} VND</p>
                     <div class="d-flex justify-content-center align-items-center mb-2">
                         <button class="btn minus rounded-btn btn-sm rounded-circle bg-danger text-white me-2">-</button>
@@ -109,7 +109,7 @@ uploadFoodBtn.addEventListener("click", async () => {
     })
     // Tạo object món ăn mới để gửi lên API
     const newDish = {
-        id: currentEditingFoodId ? currentEditingFoodId : id,
+        id: currentEditingFoodId ? currentEditingFoodId : JSON.stringify(id),
         name: foodName,
         img: uploadedImageUrl,
         price: foodPrice

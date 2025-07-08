@@ -31,11 +31,15 @@ document.addEventListener("DOMContentLoaded", () => {
         e.addEventListener("click", () => {
             listBox.forEach(e => e.style.display = "none");
             listBox[i].style.display = "block";
+            localStorage.setItem("index",i);
         });
     });
 
+  const indexBox = localStorage.getItem("index");
 
-
+  if(indexBox) {
+    listBox[indexBox].style.display = "block";
+  }
     document.getElementById("userAvatar").addEventListener("click", () => {
         document.getElementById("userDropdown").classList.toggle("d-none");
     });
@@ -102,5 +106,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     loadDashboard();
+
+
+
+    
 
 });

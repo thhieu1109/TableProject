@@ -10,21 +10,20 @@ async function getTable() {
 
     tableData.forEach(table => {
         const relatedOrder = orderData.find(order => order.id == table.id);
-
         const isUnpaid = relatedOrder && relatedOrder.status !== "paid";
-        // Nếu bàn đang trống (status === true), thêm vào lựa chọn order
+        // Nếu bàn đang có người (status === true), thêm vào lựa chọn order
         if (table.status && isUnpaid) {
             tableSelect.innerHTML += `<option value="${table.id}">${table.name}</option>`;
 
         }
 
         // Chọn hình ảnh phù hợp theo trạng thái của bàn(toán tử 3 ngôi)
-        const imageSrc = (table.status && isUnpaid)
+        const imageSrc = table.status
             ? "../image/tables/tea-time.png"
             : "../image/tables/restaurant.png";
 
         // Tạo nút theo trạng thái bàn(toán tử 3 ngôi)
-        const actionButtons = (table.status && isUnpaid)
+        const actionButtons = table.status
             ? `
                 <button class="btn btn-success" onclick="handleAddClick(${table.id})">
                     <i class="fa-solid fa-plus"></i> ADD
@@ -233,6 +232,7 @@ async function showPaidOrders(params) {
         orderCard.classList.add("col-md-6", "mb-3");
 
         orderCard.innerHTML = `
+        
             <div class="card shadow-sm fixed-order-card">
                 <div class="card-header bg-success text-white">
                     <strong>Bàn số: ${element.id}</strong>

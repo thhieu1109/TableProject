@@ -65,55 +65,131 @@
                     </div>
                 </div>
             </div>
-            <main class="contents">
-                <div class="box">
-                    <div class="row g-4 text-center">
-                        <div class="col-md-3">
-                            <div class="card dash-card border-start border-success border-4 shadow-sm h-100">
-                                <div class="card-body">
-                                    <div class="dash-icon bg-success mb-2">
-                                        <i class="fa-solid fa-chair text-white"></i>
+            <div class="contents">
+                <div class="box container-fluid p-3">
+                    <div class="dashboard-container">
+                        <!-- Header -->
+                        <div class="dashboard-header text-center mb-4">
+                            <h1>📊 Restaurant Analytics Dashboard</h1>
+                            <p class="text-muted">Phân tích doanh thu và hiệu suất nhà hàng</p>
+                        </div>
+
+                        <!-- Quick Stats Cards -->
+                        <div class="row g-4 mb-4 text-center">
+                            <div class="col-md-3">
+                                <div class="card dash-card border-start border-success border-4 shadow-sm h-100">
+                                    <div class="card-body">
+                                        <div class="dash-icon bg-success mb-2">
+                                            <i class="fa-solid fa-chair text-white"></i>
+                                        </div>
+                                        <h6 class="text-muted">Tổng số bàn</h6>
+                                        <h3 id="totalTables" class="fw-bold">0</h3>
                                     </div>
-                                    <h6 class="text-muted">Tổng số bàn</h6>
-                                    <h3 id="totalTables" class="fw-bold">0</h3>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card dash-card border-start border-primary border-4 shadow-sm h-100">
+                                    <div class="card-body">
+                                        <div class="dash-icon bg-primary mb-2">
+                                            <i class="fa-solid fa-utensils text-white"></i>
+                                        </div>
+                                        <h6 class="text-muted">Bàn sẵn sàng tiếp khách</h6>
+                                        <h3 id="activeTables" class="fw-bold">0</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card dash-card border-start border-warning border-4 shadow-sm h-100">
+                                    <div class="card-body">
+                                        <div class="dash-icon bg-warning mb-2">
+                                            <i class="fa-solid fa-receipt text-white"></i>
+                                        </div>
+                                        <h6 class="text-muted">Đơn chưa thanh toán</h6>
+                                        <h3 id="unpaidOrders" class="fw-bold">0</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card dash-card border-start border-danger border-4 shadow-sm h-100">
+                                    <div class="card-body">
+                                        <div class="dash-icon bg-danger mb-2">
+                                            <i class="fa-solid fa-coins text-white"></i>
+                                        </div>
+                                        <h6 class="text-muted">Doanh thu hôm nay</h6>
+                                        <h3 id="todayRevenue" class="fw-bold">0 VND</h3>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3">
-                            <div class="card dash-card border-start border-primary border-4 shadow-sm h-100">
-                                <div class="card-body">
-                                    <div class="dash-icon bg-primary mb-2">
-                                        <i class="fa-solid fa-utensils text-white"></i>
+
+                        <!-- Summary Stats -->
+                        <div class="row g-4 mb-4 text-center">
+                            <div class="col-md-3">
+                                <div class="card shadow-sm h-100">
+                                    <div class="card-body">
+                                        <h5>Tổng doanh thu</h5>
+                                        <div class="fs-4 fw-bold" id="totalRevenue">0</div>
+                                        <small class="text-muted">VND</small>
                                     </div>
-                                    <h6 class="text-muted">Đang hoạt động</h6>
-                                    <h3 id="activeTables" class="fw-bold">0</h3>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card shadow-sm h-100">
+                                    <div class="card-body">
+                                        <h5>Số đơn hàng</h5>
+                                        <div class="fs-4 fw-bold" id="totalOrders">0</div>
+                                        <small class="text-muted">đơn</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card shadow-sm h-100">
+                                    <div class="card-body">
+                                        <h5>Món ăn phổ biến</h5>
+                                        <div class="fs-5 fw-bold" id="popularDish">-</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card shadow-sm h-100">
+                                    <div class="card-body">
+                                        <h5>Khách hàng thường xuyên</h5>
+                                        <div class="fs-5 fw-bold" id="frequentCustomer">-</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3">
-                            <div class="card dash-card border-start border-warning border-4 shadow-sm h-100">
-                                <div class="card-body">
-                                    <div class="dash-icon bg-warning mb-2">
-                                        <i class="fa-solid fa-receipt text-white"></i>
+
+                        <!-- Charts Section -->
+                        <div class="row g-4">
+                            <div class="col-md-4">
+                                <div class="card shadow-sm h-100">
+                                    <div class="card-body">
+                                        <h5>💰 Doanh thu theo bàn</h5>
+                                        <div class="bar-chart" style="height: 250px;"></div>
                                     </div>
-                                    <h6 class="text-muted">Đơn chưa thanh toán</h6>
-                                    <h3 id="unpaidOrders" class="fw-bold">0</h3>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="card dash-card border-start border-danger border-4 shadow-sm h-100">
-                                <div class="card-body">
-                                    <div class="dash-icon bg-danger mb-2">
-                                        <i class="fa-solid fa-coins text-white"></i>
+                            <div class="col-md-4">
+                                <div class="card shadow-sm h-100">
+                                    <div class="card-body">
+                                        <h5>🍽️ Món ăn bán chạy nhất</h5>
+                                        <div class="top-dishes-chart" style="height: 250px;"></div>
                                     </div>
-                                    <h6 class="text-muted">Doanh thu hôm nay</h6>
-                                    <h3 id="todayRevenue" class="fw-bold">0 VND</h3>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card shadow-sm h-100">
+                                    <div class="card-body">
+                                        <h5>👥 Khách hàng quen thuộc</h5>
+                                        <div class="user-booking-chart" style="height: 250px;"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
 
                 <div class="box">
                     <div class="row row-cols-xl-4 row-cols-md-2 row-cols-1 p-3 tables">
@@ -166,13 +242,13 @@
                     </div>
                 </div>
                 <div class="box">
-                    <h4 class="mb-3">USER</h4>
+
                     <div class="user-card-wrapper d-flex justify-content-center mt-5" id="user-info">
                         <!-- Thông tin user sẽ được render ở đây -->
                     </div>
                 </div>
 
-            </main>
+            </div>
 
         </div>
 
@@ -384,9 +460,12 @@
     <script src="../js/getTable.js"></script>
     <script src="../js/getDish.js"></script>
     <script src="../js/getUser.js"></script>
+    <script src="../js/chart.js"></script>
+
 
     <!-- Bootstrap JavaScript Libraries -->
-
+    <!-- Add this script tag to your HTML file -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
         crossorigin="anonymous"></script>
