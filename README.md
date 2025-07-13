@@ -26,7 +26,25 @@
 ---
 
 ## 📂 Cấu trúc thư mục chính
-<pre lang="markdown"> ```plaintext TABLEPROJECT/ ├── css/ # File CSS cho từng trang │ ├── Home.css │ └── LoginAndSignup.css ├── image/ # Hình ảnh món ăn và bàn │ ├── dish/ │ └── tables/ ├── js/ # Các file xử lý logic JS │ ├── api.js # Hàm gọi API │ ├── chart.js # Hiển thị biểu đồ │ ├── configCloudinary.js # Cấu hình Cloudinary │ ├── getDish.js, getTable.js, getUser.js │ ├── home.js # JS cho trang Home │ ├── loginScript.js │ ├── signIn.js / signUp.js ├── views/ # Giao diện HTML │ ├── Home.html │ └── LoginAndSignup.html ├── db.json # File JSON làm cơ sở dữ liệu giả lập └── README.md # File hướng dẫn ``` </pre>
+├── css/
+│   ├── Home.css
+│   └── LoginAndSignup.css
+├── image/
+│   ├── dish/
+│   └── tables/
+├── js/
+│   ├── api.js
+│   ├── chart.js
+│   ├── configCloudinary.js
+│   ├── getDish.js, getTable.js, getUser.js
+│   ├── home.js
+│   ├── loginScript.js
+│   ├── signIn.js / signUp.js
+├── views/
+│   ├── Home.html
+│   └── LoginAndSignup.html
+├── db.json
+└── README.md
 
 
 Dự án sử dụng cho mục đích học tập. Không dùng trong môi trường sản xuất.
