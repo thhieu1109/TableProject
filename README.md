@@ -25,26 +25,5 @@
 
 ---
 
-## 📂 Cấu trúc thư mục chính
-├── css/
-│   ├── Home.css
-│   └── LoginAndSignup.css
-├── image/
-│   ├── dish/
-│   └── tables/
-├── js/
-│   ├── api.js
-│   ├── chart.js
-│   ├── configCloudinary.js
-│   ├── getDish.js, getTable.js, getUser.js
-│   ├── home.js
-│   ├── loginScript.js
-│   ├── signIn.js / signUp.js
-├── views/
-│   ├── Home.html
-│   └── LoginAndSignup.html
-├── db.json
-└── README.md
-
 
 Dự án sử dụng cho mục đích học tập. Không dùng trong môi trường sản xuất.
